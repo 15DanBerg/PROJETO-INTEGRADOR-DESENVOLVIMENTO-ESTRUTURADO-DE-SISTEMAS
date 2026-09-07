@@ -1,0 +1,31 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+  url      = env("DATABASE_URL")
+}
+
+model Vaga {
+  id            String   @id @default(cuid())
+  titulo        String
+  endereco      String
+  bairro        String
+  cidade        String   @default("São Paulo")
+  descricao     String?
+  fotoUrl       String?
+  coberta       Boolean  @default(false)
+  acesso24h     Boolean  @default(false)
+  exclusiva     Boolean  @default(false)
+  modalidadeHora     Boolean @default(false)
+  modalidadeDiaria   Boolean @default(false)
+  modalidadeMensal   Boolean @default(false)
+  precoHora     Float?
+  precoDiaria   Float?
+  precoMensal   Float?
+  proprietario  String
+  telefone      String
+  createdAt     DateTime @default(now())
+  updatedAt     DateTime @updatedAt
+}
